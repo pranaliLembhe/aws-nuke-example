@@ -1,25 +1,25 @@
 regions:
-- global
+- ap-southeast-1
 account-blocklist:
 - 123456789001
-# resource-types:
-#   # only nuke these three resources
-#   targets:
-#   - EC2Instance
+resource-types:
+  # only nuke these three resources
+  targets:
+  - EC2Instance
 #   - S3Bucket
 #   # don't nuke IAM users
-#   excludes:
-#   - IAMUser
+  excludes:
+  - IAMUser
 # accounts:
 #   "444964418527" : {}
 accounts:
-  444964418527:
-    filters:
-      EC2Instance:
-      # will not nuke following resource
-      - property: "tag:aws-nuke"
-        type: regex
-        value: "aws-nuke01"
+  444964418527: {}
+    # filters:
+    #   EC2Instance:
+    #   # will not nuke following resource
+    #   - property: "tag:aws-nuke"
+    #     type: regex
+    #     value: "aws-nuke01"
     #   S3Bucket:
     #   - type: "glob"
     #     value: "s3://aws-nuke-bucket-demo/**"
