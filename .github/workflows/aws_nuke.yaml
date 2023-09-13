@@ -1,0 +1,26 @@
+name: aws nuke 
+
+on:
+  push:
+    branches:
+      - '*'
+
+
+jobs:
+  build-and-test:
+
+    runs-on: ubuntu-latest
+
+     steps:
+    - uses: actions/checkout@v2
+    
+    - name: Configure AWS credentials
+      continue-on-error: false
+      uses: aws-actions/configure-aws-credentials@v1.6.1
+      with:
+        aws-region: ap-southeast-1
+        role-to-assume: ${{ secrets.IAM_ROLE_ARN_TEST }}
+        role-session-name: run-test
+    
+    - name: aws-nuke
+      run: aws-nuke -c nuke-config.yaml
