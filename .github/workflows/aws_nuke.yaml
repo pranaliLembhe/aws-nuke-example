@@ -46,7 +46,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Generate and Save OIDC Token
-      uses: aws-actions/aws/cli@v1
+      uses: aws-actions/configure-aws-credentials@v4
       with:
         aws-command: sts get-caller-identity
       env:
