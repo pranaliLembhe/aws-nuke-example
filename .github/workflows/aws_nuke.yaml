@@ -46,11 +46,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    # - name: Configure AWS Credentials
+    #   uses: aws-actions/configure-aws-credentials@v4
+    #   with:
+    #     role-to-assume: ${{secrets.AWS_IAM_EXAMPLE_ROLE}}
+    #     aws-region: ap-south-1
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
         role-to-assume: ${{secrets.AWS_IAM_EXAMPLE_ROLE}}
         aws-region: ap-south-1
-    
+        web-identity-token-file: ${{github.workspace}}/.github/aws-oidc-token
+
     - name: aws-nuke
       run: aws-nuke -c nuke-config.yaml
