@@ -26,4 +26,4 @@ accounts:
     #   EBSVolume:
     #   - property: "tag:aws-nuke"
     #     type: regex
-    #     value: "aws-nuke01"%
+    #     value: "aws-nuke01"
