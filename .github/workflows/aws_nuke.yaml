@@ -45,13 +45,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Generate and Save OIDC Token
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        aws-command: sts get-caller-identity
-        aws-region: ap-south-1
-      env:
-        AWS_WEB_IDENTITY_TOKEN_FILE: ${{ github.workspace }}/.github/aws-oidc-token
+    # - name: Generate and Save OIDC Token
+    #   uses: aws-actions/configure-aws-credentials@v4
+    #   with:
+    #     aws-command: sts get-caller-identity
+    #     aws-region: ap-south-1
+    #   env:
+    #     AWS_WEB_IDENTITY_TOKEN_FILE: ${{ github.workspace }}/.github/aws-oidc-token
 
     # - name: Configure AWS Credentials
     #   uses: aws-actions/configure-aws-credentials@v4
