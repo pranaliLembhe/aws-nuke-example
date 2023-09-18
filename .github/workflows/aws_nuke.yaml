@@ -68,4 +68,9 @@ jobs:
         # web-identity-token-file: ${{github.workspace}}/.github/aws-oidc-token
 
     - name: aws-nuke
-      run: aws-nuke -c nuke-config.yaml
+      run: |
+        wget https://github.com/rebuy-de/aws-nuke/releases/download/v2.14.0/aws-nuke-v2.14.0-linux-amd64
+        chmod u+x aws-nuke-v2.14.0-linux-amd64
+        sudo mv aws-nuke-v2.14.0-linux-amd64 /usr/local/bin/aws-nuke
+        aws-nuke --help
+        aws-nuke -c nuke-config.yaml
