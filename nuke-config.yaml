@@ -1,11 +1,6 @@
 regions:
 - ap-southeast-1
-account-blocklist:
-- 793463097803
-- 390981080572
-- 104745690379
-- 160071257600
-- 489455091964
+
 resource-types:
   # only nuke these three resources
   targets:
