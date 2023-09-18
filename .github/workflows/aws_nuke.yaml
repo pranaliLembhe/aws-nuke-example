@@ -61,7 +61,7 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
-        role-to-assume: ${{secrets.AWS_IAM_EXAMPLE_ROLE}}
+        role-to-assume: arn:aws:iam::444964418527:role/github-nuke-demo
         aws-region: ap-south-1
         # web-identity-token-file: ${{github.workspace}}/.github/aws-oidc-token
 
