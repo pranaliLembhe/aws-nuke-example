@@ -69,8 +69,7 @@ jobs:
 
     - name: aws-nuke
       run: |
-        wget https://github.com/rebuy-de/aws-nuke/releases/download/v2.14.0/aws-nuke-v2.14.0-linux-amd64
-        chmod u+x aws-nuke-v2.14.0-linux-amd64
-        sudo mv aws-nuke-v2.14.0-linux-amd64 /usr/local/bin/aws-nuke
+        wget https://github.com/rebuy-de/aws-nuke/releases/download/v2.23.0/aws-nuke-v2.23.0-linux-amd64.tar.gz
+        tar -xvf ./aws-nuke-v2.23.0-linux-amd64.tar.gz aws-nuke-v2.23.0-linux-amd64 
         aws-nuke --help
         aws-nuke -c nuke-config.yaml
