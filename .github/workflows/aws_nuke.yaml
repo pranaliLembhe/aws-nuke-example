@@ -64,6 +64,7 @@ jobs:
         # role-to-assume: ${{secrets.AWS_IAM_EXAMPLE_ROLE}}
         aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
         aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+        # aws-secret-access-token: ${{secrets.AWS_SECRET_ACCESS_TOKEN}}
         aws-region: ap-south-1
         # web-identity-token-file: ${{github.workspace}}/.github/aws-oidc-token
 
