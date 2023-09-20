@@ -32,11 +32,12 @@
 name: aws nuke
 
 on:
+  schedule:
+    - cron: '*/* 5 * * *'    
   push:
     branches:
       - '*'
-  schedule:
-    - cron: "*/2 * * * *"
+
 
 jobs:
   build:
