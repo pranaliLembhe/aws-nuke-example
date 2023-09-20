@@ -1,5 +1,5 @@
 regions:
-- ap-southeast-1
+- eu-north-1
 account-blocklist:
 - 489455091964
 resource-types:
