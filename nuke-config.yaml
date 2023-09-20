@@ -1,7 +1,7 @@
 regions:
 - eu-north-1
 account-blocklist:
-- 489455091964
+- 444964418527
 resource-types:
   # only nuke these three resources
   targets:
@@ -10,10 +10,10 @@ resource-types:
 #   # don't nuke IAM users
   excludes:
   - IAMUser
-# accounts:
-#   "444964418527" : {}
 accounts:
-  444964418527: {}
+  "489455091964" : {}
+# accounts:
+#   444964418527: {}
     # filters:
     #   EC2Instance:
     #   # will not nuke following resource
