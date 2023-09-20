@@ -74,4 +74,4 @@ jobs:
         chmod u+x aws-nuke-v2.23.0-linux-amd64
         sudo mv aws-nuke-v2.23.0-linux-amd64 /usr/local/bin/aws-nuke
         aws-nuke --help
-        aws-nuke -c nuke-config.yaml --force
+        aws-nuke -c nuke-config.yaml --force --no-dry-run
