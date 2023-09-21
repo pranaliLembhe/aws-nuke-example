@@ -10,7 +10,38 @@ jobs:
     name: Friday Morning Job
     steps:
     - uses: actions/checkout@v2
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+        aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+        aws-region: ap-south-1
+
+    - name: aws-nuke
+      run: |
+        wget https://github.com/rebuy-de/aws-nuke/releases/download/v2.23.0/aws-nuke-v2.23.0-linux-amd64.tar.gz
+        tar -xvf ./aws-nuke-v2.23.0-linux-amd64.tar.gz aws-nuke-v2.23.0-linux-amd64 
+        chmod u+x aws-nuke-v2.23.0-linux-amd64
+        sudo mv aws-nuke-v2.23.0-linux-amd64 /usr/local/bin/aws-nuke
+        aws-nuke --help
+        aws-nuke -c nuke-config.yaml --force
+
   evening_job:
     name: Friday Evening Job
     steps:
     - uses: actions/checkout@v2
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+        aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+        aws-region: ap-south-1
+
+    - name: aws-nuke
+      run: |
+        wget https://github.com/rebuy-de/aws-nuke/releases/download/v2.23.0/aws-nuke-v2.23.0-linux-amd64.tar.gz
+        tar -xvf ./aws-nuke-v2.23.0-linux-amd64.tar.gz aws-nuke-v2.23.0-linux-amd64 
+        chmod u+x aws-nuke-v2.23.0-linux-amd64
+        sudo mv aws-nuke-v2.23.0-linux-amd64 /usr/local/bin/aws-nuke
+        aws-nuke --help
+        aws-nuke -c nuke-config.yaml --force
