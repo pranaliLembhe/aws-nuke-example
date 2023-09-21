@@ -1,0 +1,59 @@
+name: AWS nuke
+
+on:
+  schedule:
+    - cron: '0 10 * * 5'  # First job runs at 10 AM 
+    - cron: '0 18 * * 5'  # Second job runs at 6 PM 
+
+jobs:
+  morning_job:
+    name: Friday Morning Job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-region: ap-south-1
+
+      - name: Run Morning Job
+        run: |
+          echo "Following list of resources will get delete"
+          wget https://github.com/rebuy-de/aws-nuke/releases/download/v2.23.0/aws-nuke-v2.23.0-linux-amd64.tar.gz
+          tar -xvf ./aws-nuke-v2.23.0-linux-amd64.tar.gz aws-nuke-v2.23.0-linux-amd64 
+          chmod u+x aws-nuke-v2.23.0-linux-amd64
+          sudo mv aws-nuke-v2.23.0-linux-amd64 /usr/local/bin/aws-nuke
+          aws-nuke --help
+          aws-nuke -c nuke-config.yaml --force
+
+  evening_job:
+    name: Friday Evening Job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        # role-to-assume: ${{secrets.AWS_IAM_EXAMPLE_ROLE}}
+        aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+        aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+        # aws-secret-access-token: ${{secrets.AWS_SECRET_ACCESS_TOKEN}}
+        aws-region: ap-south-1
+        # web-identity-token-file: ${{github.workspace}}/.github/aws-oidc-token
+
+    - name: aws-nuke
+      run: |
+        wget https://github.com/rebuy-de/aws-nuke/releases/download/v2.23.0/aws-nuke-v2.23.0-linux-amd64.tar.gz
+        tar -xvf ./aws-nuke-v2.23.0-linux-amd64.tar.gz aws-nuke-v2.23.0-linux-amd64 
+        chmod u+x aws-nuke-v2.23.0-linux-amd64
+        sudo mv aws-nuke-v2.23.0-linux-amd64 /usr/local/bin/aws-nuke
+        aws-nuke --help
+        aws-nuke -c nuke-config.yaml --force
