@@ -8,5 +8,9 @@ on:
 jobs:
   morning_job:
     name: Friday Morning Job
+    steps:
+    - uses: actions/checkout@v2
   evening_job:
     name: Friday Evening Job
+    steps:
+    - uses: actions/checkout@v2
