@@ -2,8 +2,8 @@ name: AWS nuke
 
 on:
   schedule:
-    - cron: '35 1 * * *'
-    - cron: '35 1 * * *'
+    - cron: '35 13 * * *'
+    - cron: '35 13 * * *'
 
 jobs:
   morning_job:
