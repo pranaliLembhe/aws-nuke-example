@@ -8,6 +8,7 @@ on:
 jobs:
   morning_job:
     name: Friday Morning Job
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Configure AWS Credentials
@@ -28,6 +29,7 @@ jobs:
 
   evening_job:
     name: Friday Evening Job
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Configure AWS Credentials
